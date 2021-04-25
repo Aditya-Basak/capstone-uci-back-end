@@ -18,6 +18,7 @@ public class UserController {
     @Autowired
     UserService userService;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/get_user")
     public ResponseEntity<UserResponse> getUser(@RequestParam Long id) {
         User user = userService.getUserById(id);
@@ -32,7 +33,8 @@ public class UserController {
         User user = userService.registerUser(registerUserRequest);
         return new ResponseEntity<User> (user, HttpStatus.OK);
     }
-
+    
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/login_user")
     public ResponseEntity<User> loginUser(@RequestBody LoginRequest loginRequest) throws Exception{
         User user = userService.loginUser(loginRequest);
