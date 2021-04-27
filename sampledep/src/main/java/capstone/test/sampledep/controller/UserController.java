@@ -27,7 +27,7 @@ public class UserController {
         userResponse.setName(user.getName());
         return new ResponseEntity<UserResponse> (userResponse, HttpStatus.OK);
     }
-
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/register_user")
     public ResponseEntity<User> registerUser(@RequestBody RegisterUserRequest registerUserRequest) throws Exception{
         User user = userService.registerUser(registerUserRequest);
